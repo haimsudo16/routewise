@@ -1,0 +1,59 @@
+spring:
+  application:
+    name: routewise-backend
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/routewise
+    username: postgres
+    password: aimanworld15
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: false
+    open-in-view: false
+    properties:
+      hibernate:
+        format_sql: true
+        jdbc:
+          time_zone: UTC
+
+  jackson:
+    default-property-inclusion: non_null
+    time-zone: UTC
+
+server:
+  port: 8080
+  error:
+    include-message: always
+    include-binding-errors: always
+
+routewise:
+  jwt:
+    secret: this-is-a-development-only-secret-change-me-please-32-bytes-min
+    expiration-ms: 86400000
+
+  cors:
+    allowed-origins: http://localhost:5173
+
+  geocoding:
+    provider-url: https://nominatim.openstreetmap.org
+    user-agent: RouteWise/1.0
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+
+  api-docs:
+    path: /v3/api-docs
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+
+logging:
+  level:
+    com.routewise: INFO

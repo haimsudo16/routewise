@@ -1,0 +1,115 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import 'leaflet/dist/leaflet.css';
+
+:root {
+  color-scheme: dark;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  @apply bg-base-950 text-slate-200 antialiased;
+  background-image:
+    radial-gradient(circle at 20% 0%, rgba(61, 220, 247, 0.08), transparent 45%),
+    radial-gradient(circle at 85% 15%, rgba(52, 211, 153, 0.05), transparent 40%);
+  background-attachment: fixed;
+}
+
+::selection {
+  background: rgba(61, 220, 247, 0.25);
+  color: #fff;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #1a2236;
+  border-radius: 8px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #28324a;
+}
+
+.font-mono-tabular {
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.02em;
+}
+
+.glass-panel {
+  background: rgba(17, 24, 40, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+.text-gradient {
+  background: linear-gradient(90deg, #3ddcf7, #7ef4ff 60%, #3ddcf7);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.grid-bg {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+  background-size: 44px 44px;
+}
+
+.noise-layer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* Leaflet dark theme overrides */
+.leaflet-container {
+  background: #0a0e18 !important;
+  font-family: inherit;
+}
+.leaflet-popup-content-wrapper,
+.leaflet-popup-tip {
+  background: #111828;
+  color: #e2e8f0;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+.leaflet-control-zoom a {
+  background: #111828 !important;
+  color: #e2e8f0 !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+.cursor-none-desktop {
+  cursor: none;
+}
+
+@media (max-width: 768px) {
+  .cursor-none-desktop {
+    cursor: auto;
+  }
+}
